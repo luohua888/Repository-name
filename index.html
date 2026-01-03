@@ -1,274 +1,1223 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>白域公益端口</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-        body {
-            background: #000;
-            background-image: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 20px;
-            padding: 30px 20px;
-            box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
-            border: 1px solid rgba(0, 191, 255, 0.3);
-        }
-        .avatar {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .avatar img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #00bfff;
-            object-fit: cover;
-        }
-        .title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #00bfff;
-            text-shadow: 0 0 10px #00bfff;
-            margin-bottom: 10px;
-        }
-        .sub-title {
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        .info-card {
-            background: rgba(25, 25, 45, 0.6);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 3px solid #00bfff;
-        }
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        .info-item label {
-            color: #ccc;
-            font-size: 14px;
-        }
-        .info-item span {
-            font-size: 16px;
-            font-weight: 500;
-            color: #00bfff;
-        }
-        .status-good {
-            color: #00ff47 !important;
-        }
-        .delay-box {
-            background: rgba(25, 25, 45, 0.6);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .delay-title {
-            color: #ccc;
-
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        .delay-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ff47;
-        }
-        .server-tag {
-            color: #00bfff;
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-        .tg-box {
-            background: rgba(25, 25, 45, 0.6);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .tg-title {
-            color: #00bfff;
-            font-size: 16px;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        .tg-link {
-            display: inline-block;
-            padding: 8px 15px;
-            background: #e53e3e;
-            color: #fff;
-            border-radius: 5px;
-            text-decoration: none;
-            margin: 0 5px;
-            font-size: 14px;
-        }
-        .tg-link:hover {
-            background: #c53030;
-            transition: 0.3s;
-        }
-        .btn-box {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .refresh-btn, .switch-btn {
-            width: 100%;
-            padding: 12px;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        .refresh-btn {
-            background: linear-gradient(90deg, #ff4500, #32cd32);
-            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-        }
-        .switch-btn {
-            background: linear-gradient(90deg, #00bfff, #9932cc);
-            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
-        }
-        .refresh-btn:hover, .switch-btn:hover {
-            opacity: 0.9;
-            transition: 0.3s;
-        }
-        .copyright {
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- 头像区域 -->
-        <div class="avatar">
-            <img src="https://sdk.cn-nb1.rains3.com/761160c8-ea78-48e8-b1c0-1f93600ef58a.jpg" alt="头像">
-        </div>
-        <!-- 标题区域 -->
-        <div class="title">白域公益端口</div>
-        <div class="sub-title">服务器保持稳定连接中...</div>
-        <!-- 信息卡片 -->
-        <div class="info-card">
-            <div class="info-item">
-                <label>端口名称</label>
-                <span>白域公益端口</span>
-            </div>
-            <div class="info-item">
-                <label>领先优势</label>
-                <span>双适配·低延迟·高防护</span>
-            </div>
-            <div class="info-item">
-                 <label>当前时间</label>
-                 <span id="current-time">2026-10-05 18:53:48</span>
+ <html lang="zh-CN">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+     <meta name="description" content="落花公益游戏美化资源导航，公益捐赠用于资源维护">
+     <title>落花公益导航 - 游戏美化资源站</title>
+     <style>
+         * { margin: 0; padding: 0; box-sizing: border-box; font-family: "微软雅黑", "SF Pro Display", sans-serif; }
+         :root {
+             --c1: #ec4899;
+             --c2: #f472b6;
+             --c3: #f9a8d4;
+             --rgb1: 236,72,153;
+             --rgb2: 244,114,182;
+             --rgb3: 249,168,129;
+             --bg-img: url('https://b0.bdstatic.com/754847694d48e01afc1dbcff4dc4776c.jpg');
+             --glass-bg: rgba(255,255,255,0.06);
+             --glass-border: rgba(255,255,255,0.18);
+             --shadow: 0 20px 50px rgba(0,0,0,0.3);
+             --donate-c1: #10b981;
+             --donate-c2: #34d399;
+             --donate-rgb: 16, 185, 129;
+         }
+         /* 高级欢迎弹窗 */
+         .welcome-modal {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(0,0,0,0.85);
+             backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             z-index: 9999;
+             animation: modalFadeIn 0.8s ease-in-out;
+         }
+         .modal-content {
+             width: 90%;
+             max-width: 500px;
+             background: var(--glass-bg);
+             backdrop-filter: blur(30px);
+             border-radius: 25px;
+             border: 1px solid var(--glass-border);
+             padding: 50px 30px;
+             text-align: center;
+             box-shadow: 0 20px 60px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.3);
+             position: relative;
+             animation: modalPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+         }
+         .modal-title {
+             font-size: 36px;
+             font-weight: 900;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             margin-bottom: 20px;
+             text-shadow: 0 0 20px rgba(var(--rgb1), 0.6);
+             animation: gradientFlow 4s linear infinite;
+         }
+         .modal-desc {
+             font-size: 18px;
+             color: #fff;
+             opacity: 0.9;
+             margin-bottom: 30px;
+             letter-spacing: 1px;
+         }
+         .close-btn {
+             padding: 12px 30px;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             background-size: 200% 100%;
+             border: none;
+             border-radius: 50px;
+             color: #fff;
+             font-size: 16px;
+             font-weight: bold;
+             cursor: pointer;
+             box-shadow: 0 8px 20px rgba(var(--rgb1), 0.4);
+             transition: all 0.3s ease;
+             animation: gradientFlow 4s linear infinite;
+             }
+         .close-btn:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 12px 25px rgba(var(--rgb1), 0.6);
+         }
+         body {
+             min-height: 100vh;
+             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), var(--bg-img);
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed;
+             backdrop-filter: blur(5px);
+             -webkit-backdrop-filter: blur(5px);
+             color: #fff;
+             overflow-x: hidden;
+         }
+         .scroll-container {
+             width: 100%;
+             max-width: 700px;
+             margin: 0 auto;
+             padding: 20px;
+             height: 100vh;
+             overflow-y: auto;
+             -ms-overflow-style: none;
+             scrollbar-width: none;
+         }
+         .scroll-container::-webkit-scrollbar { display: none; }
+         .nav-container {
+             width: 100%;
+             background: var(--glass-bg);
+             backdrop-filter: blur(60px);
+             -webkit-backdrop-filter: blur(60px);
+             border-radius: 40px;
+             padding: 50px 40px;
+             box-shadow: var(--shadow),inset 0 1px 0 rgba(255,255,255,0.2),inset 0 -1px 0 rgba(0,0,0,0.3);
+             border: 1px solid var(--glass-border);
+             position: relative;
+             overflow: hidden;
+         }
+         .nav-container::before {
+             content: "";
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             animation: gradientFlow 4s linear infinite;
+             border-radius: 40px 40px 0 0;
+         }
+         .nav-container::after {
+             content: "";
+             position: absolute;
+             top: -80px;
+             right: -80px;
+             width: 200px;
+             height: 200px;
+             border-radius: 50%;
+             background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
+             filter: blur(120px);
+             opacity: 0.25;
+             z-index: 0;
+             animation: gradientFlow 4s linear infinite reverse;
+         }
+         .nav-title {
+             text-align: center;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             font-size: 48px;
+             margin-bottom: 50px;
+             font-weight: 900;
+             letter-spacing: 6px;
+             text-shadow: 0 0 30px rgba(var(--rgb1), 0.6);
+             position: relative;
+             z-index: 1;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .stats-bar {
+             display: flex;
+             justify-content: space-around;
+             margin-bottom: 50px;
+             padding: 30px;
+             background: rgba(0,0,0,0.12);
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border-radius: 30px;
+             border: 1px solid var(--glass-border);
+             position: relative;
+             z-index: 1;
+         }
+         .stats-num {
+             font-size: 42px;
+             font-weight: bold;
+             display: block;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             text-shadow: 0 0 25px rgba(var(--rgb1), 0.5);
+             margin-bottom: 10px;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .stats-text {
+             font-size: 18px;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             text-shadow: 0 0 15px rgba(var(--rgb1), 0.3);
+             animation: gradientFlow 4s linear infinite;
+         }
+         .link-group {
+             display: flex;
+             flex-direction: column;
+             gap: 20px;
+             position: relative;
+             z-index: 1;
+             margin-bottom: 40px;
+         }
+         .link-btn {
+             display: flex;
+             align-items: center;
+             justify-content: flex-start;
+             gap: 20px;
+             width: 100%;
+             padding: 25px 30px;
+             background: var(--glass-bg);
+             backdrop-filter: blur(40px);
+             -webkit-backdrop-filter: blur(40px);
+             border-radius: 25px;
+             border: 1px solid var(--glass-border);
+             -webkit-tap-highlight-color: transparent;
+             position: relative;
+             overflow: hidden;
+             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+             cursor: pointer;
+         }
+         .link-btn:hover {
+             background: rgba(255,255,255,0.08);
+             transform: translateY(-6px);
+             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+             border-color: rgba(var(--rgb1), 0.3);
+         }
+         .btn-icon {
+             width: 50px;
+             height: 50px;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             background-size: 200% 100%;
+             color: #fff;
+             font-size: 22px;
+             box-shadow: 0 0 25px rgba(var(--rgb1), 0.4);
+             flex-shrink: 0;
+             animation: gradientFlow 4s linear infinite, breathe 3s ease-in-out infinite;
+         }
+         .btn-text {
+             font-size: 20px;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             letter-spacing: 1px;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .link-status {
+             font-size: 12px;
+             color: #ccc;
+             margin-top: 5px;
+             margin-left: 70px;
+         }
+         .notice-box {
+             width: 100%;
+         margin: 30px 0;
+             padding: 40px 20px;
+             background: linear-gradient(135deg, rgba(var(--rgb1), 0.1), rgba(var(--rgb2), 0.1));
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border-radius: 30px;
+             border: 1px solid var(--glass-border);
+             text-align: center;
+             position: relative;
+             z-index: 1;
+         }
+         .notice-text {
+             font-size: 28px;
+             font-weight: bold;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3), var(--c2), var(--c1));
+             background-size: 300% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             animation: textGradientFlow 8s linear infinite;
+             text-shadow: 0 0 20px rgba(var(--rgb1), 0.5);
+         }
+         /* 留言板样式 */
+         .message-board {
+             width: 100%;
+             margin-top: 40px;
+             padding: 30px;
+             background: rgba(0,0,0,0.15);
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border-radius: 25px;
+             border: 1px solid var(--glass-border);
+             position: relative;
+             z-index: 1;
+         }
+         .board-title {
+             font-size: 24px;
+             font-weight: bold;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+         margin-bottom: 20px;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .message-input-wrap {
+             display: flex;
+             gap: 10px;
+             margin-bottom: 15px;
+         }
+         #messageInput {
+             flex: 1;
+             height: 100px;
+             padding: 15px;
+             background: rgba(255,255,255,0.05);
+             border: 1px solid var(--glass-border);
+             border-radius: 15px;
+             color: #fff;
+             font-size: 16px;
+             resize: none;
+         }
+         #messageInput:focus {
+             outline: none;
+             border-color: rgba(var(--rgb1), 0.3);
+             box-shadow: 0 0 15px rgba(var(--rgb1), 0.2);
+         }
+         .btn-group {
+             display: flex;
+             flex-direction: column;
+             gap: 10px;
+         }
+         .board-btn {
+             padding: 10px 15px;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             background-size: 200% 100%;
+             border: none;
+             border-radius: 10px;
+             color: #fff;
+             font-size: 14px;
+             font-weight: bold;
+             cursor: pointer;
+             box-shadow: 0 5px 15px rgba(var(--rgb1), 0.3);
+             animation: gradientFlow 4s linear infinite;
+             flex: 1;
+         }
+         #messageList {
+             width: 100%;
+             margin-top: 20px;
+             max-height: 200px;
+             overflow-y: auto;
+             padding-right: 10px;
+         }
+         #messageList::-webkit-scrollbar {
+             width: 6px;
+         }
+         #messageList::-webkit-scrollbar-thumb {
+             background: linear-gradient(180deg, var(--c1), var(--c2));
+             border-radius: 3px;
+         }
+         .message-item {
+             padding: 12px 15px;
+             background: rgba(255,255,255,0.03);
+             border-radius: 10px;
+             margin-bottom: 10px;
+             border-left: 3px solid var(--c1);
+         }
+         .message-text {
+             color: #fff;
+             font-size: 15px;
+             line-height: 1.5;
+         }
+         .message-time {
+             color: #ccc;
+             font-size: 12px;
+             margin-top: 5px;
+             text-align: right;
+         }
+         .board-tools {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 10px;
+             margin-top: 15px;
+             padding-top: 15px;
+             border-top: 1px solid rgba(255,255,255,0.1);
+         }
+         .tool-btn {
+             padding: 8px 12px;
+         background: rgba(255,255,255,0.08);
+             border: 1px solid var(--glass-border);
+             border-radius: 8px;
+             color: #fff;
+             font-size: 14px;
+             cursor: pointer;
+             transition: all 0.3s ease;
+         }
+         .tool-btn:hover {
+             background: rgba(var(--rgb1), 0.2);
+             border-color: rgba(var(--rgb1), 0.3);
+         }
+         /* ========== 点击展示捐款二维码（合规隐藏式） ========== */
+         .donate-section {
+             width: 100%;
+             margin-top: 40px;
+             padding: 40px 30px;
+             background: linear-gradient(135deg, var(--glass-bg), rgba(var(--donate-rgb), 0.1));
+             backdrop-filter: blur(40px);
+             -webkit-backdrop-filter: blur(40px);
+             border-radius: 30px;
+             border: 1px solid var(--glass-border);
+             position: relative;
+             z-index: 1;
+             text-align: center;
+             box-shadow: var(--shadow);
+         }
+         .donate-section::before {
+             content: "";
+             position: absolute;
+             top: -5px;
+             left: -5px;
+             right: -5px;
+             bottom: -5px;
+             background: linear-gradient(45deg, var(--donate-c1), var(--donate-c2), var(--c1), var(--c2));
+             border-radius: 35px;
+             z-index: -1;
+             animation: gradientFlow 8s linear infinite;
+             opacity: 0.5;
+         }
+         .donate-title {
+             font-size: 32px;
+             font-weight: 900;
+             background: linear-gradient(90deg, var(--donate-c1), var(--donate-c2));
+             background-size: 200% 100%;
+              background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             margin-bottom: 20px;
+             text-shadow: 0 0 25px rgba(var(--donate-rgb), 0.6);
+             animation: gradientFlow 4s linear infinite;
+         }
+         .donate-desc {
+             font-size: 16px;
+             color: #fff;
+             opacity: 0.8;
+             margin-bottom: 30px;
+             line-height: 1.5;
+         }
+         /* 点击展示二维码的按钮 */
+         .show-qrcode-btn {
+             padding: 15px 40px;
+             background: linear-gradient(135deg, var(--donate-c1), var(--donate-c2));
+             border: none;
+             border-radius: 50px;
+             color: #fff;
+             font-size: 18px;
+             font-weight: bold;
+             cursor: pointer;
+             box-shadow: 0 10px 30px rgba(var(--donate-rgb), 0.3);
+             transition: all 0.3s ease;
+             animation: gradientFlow 4s linear infinite;
+             margin-bottom: 20px;
+         }
+         .show-qrcode-btn:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 15px 40px rgba(var(--donate-rgb), 0.5);
+         }
+         /* 二维码容器（默认隐藏） */
+         .qrcode-container {
+             display: none;
+             justify-content: center;
+             gap: 40px;
+             flex-wrap: wrap;
+             margin-top: 20px;
+         }
+           .qrcode-card {
+             width: 180px;
+             background: #fff;
+             padding: 15px;
+             border-radius: 20px;
+             box-shadow: 0 10px 30px rgba(var(--donate-rgb), 0.2);
+             transition: all 0.3s ease;
+         }
+         .qrcode-card:hover {
+             transform: translateY(-10px);
+             box-shadow: 0 15px 40px rgba(var(--donate-rgb), 0.4);
+         }
+         /* 嵌入你提供的二维码 */
+         .qrcode-img {
+             width: 100%;
+             border-radius: 10px;
+         }
+         .qrcode-text {
+             font-size: 14px;
+             color: #333;
+             margin-top: 10px;
+             font-weight: bold;
+             text-align: center;
+         }
+         .qrcode-tips {
+             font-size: 12px;
+             color: #666;
+             margin-top: 5px;
+             text-align: center;
+         }
+         /* ========== 仅在线用户可见的聊天室 ========== */
+         .chat-section {
+             width: 100%;
+             margin-top: 40px;
+        padding: 30px;
+             background: var(--glass-bg);
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border-radius: 25px;
+             border: 1px solid var(--glass-border);
+             position: relative;
+             z-index: 1;
+             margin-bottom: 20px;
+             display: none;
+         }
+         .chat-title {
+             font-size: 28px;
+             font-weight: 900;
+             background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+             background-size: 200% 100%;
+             -webkit-background-clip: text;
+             color: transparent;
+             margin-bottom: 20px;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .chat-layout {
+             display: flex;
+             gap: 20px;
+             height: 400px;
+         }
+         .friend-list {
+             width: 30%;
+             background: rgba(0,0,0,0.1);
+             border-radius: 15px;
+             border: 1px solid var(--glass-border);
+             padding: 15px;
+             overflow-y: auto;
+         }
+         .friend-list::-webkit-scrollbar {
+             width: 4px;
+         }
+         .friend-list::-webkit-scrollbar-thumb {
+         background: linear-gradient(180deg, var(--c1), var(--c2));
+             border-radius: 2px;
+         }
+         .friend-title {
+             font-size: 16px;
+             margin-bottom: 15px;
+             color: #fff;
+             opacity: 0.9;
+         }
+         .friend-item {
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             padding: 10px;
+             border-radius: 10px;
+             cursor: pointer;
+             margin-bottom: 8px;
+             transition: all 0.2s ease;
+         }
+         .friend-item:hover {
+             background: rgba(var(--rgb1), 0.2);
+         }
+         .friend-item.active {
+             background: rgba(var(--rgb1), 0.3);
+             border-left: 3px solid var(--c1);
+         }
+         .friend-avatar {
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-size: 18px;
+         }
+         .friend-name {
+             font-size: 14px;
+             color: #fff;
+         }
+         .add-friend-btn {
+             width: 100%;
+             padding: 8px 0;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             border: none;border-radius: 8px;
+             color: #fff;
+             font-size: 14px;
+             cursor: pointer;
+             margin-top: 10px;
+             animation: gradientFlow 4s linear infinite;
+         }
+         .chat-area {
+             flex: 1;
+             display: flex;
+             flex-direction: column;
+             background: rgba(0,0,0,0.1);
+             border-radius: 15px;
+             border: 1px solid var(--glass-border);
+             padding: 15px;
+         }
+         .chat-header {
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             padding-bottom: 15px;
+             border-bottom: 1px solid rgba(255,255,255,0.1);
+             margin-bottom: 15px;
+         }
+         .chat-avatar {
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-size: 18px;
+         }
+         .chat-name {
+             font-size: 16px;
+             color: #fff;
+             font-weight: bold;
+         }
+         .chat-messages {
+             flex: 1;
+             overflow-y: auto;
+             margin-bottom: 15px;
+         }
+         .chat-messages::-webkit-scrollbar {.chat-messages::-webkit-scrollbar {
+             width: 4px;
+         }
+         .chat-messages::-webkit-scrollbar-thumb {
+             background: linear-gradient(180deg, var(--c1), var(--c2));
+             border-radius: 2px;
+         }
+         .msg-item {
+             margin-bottom: 15px;
+             max-width: 70%;
+         }
+         .msg-mine {
+             margin-left: auto;
+         }
+         .msg-avatar {
+             width: 30px;
+             height: 30px;
+             border-radius: 50%;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             font-size: 14px;
+             margin-bottom: 5px;
+         }
+         .msg-mine .msg-avatar {
+             margin-left: auto;
+         }
+         .msg-bubble {
+             padding: 10px 15px;
+             border-radius: 15px;
+             font-size: 14px;
+             line-height: 1.4;
+         }
+         .msg-other .msg-bubble {
+             background: rgba(255,255,255,0.1);
+             border-bottom-left-radius: 5px;
+         }
+         .msg-mine .msg-bubble {
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             border-bottom-right-radius: 5px;
+         }
+         .msg-time {
+             font-size: 10px;color: #ccc;
+             margin-top: 5px;
+         }
+         .msg-mine .msg-time {
+             text-align: right;
+         }
+         .chat-input-wrap {
+             display: flex;
+             gap: 10px;
+         }
+         #chatInput {
+             flex: 1;
+             padding: 12px 15px;
+             background: rgba(255,255,255,0.05);
+             border: 1px solid var(--glass-border);
+             border-radius: 20px;
+             color: #fff;
+             font-size: 14px;
+             resize: none;
+             height: 40px;
+         }
+         #chatInput:focus {
+             outline: none;
+             border-color: rgba(var(--rgb1), 0.3);
+         }
+         .send-btn {
+             padding: 0 20px;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             border: none;
+             border-radius: 20px;
+             color: #fff;
+             font-size: 14px;
+             cursor: pointer;
+             animation: gradientFlow 4s linear infinite;
+         }
+         /* 感谢弹窗 */
+         .thanks-modal {
+             position: fixed;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             background: var(--glass-bg);    
+         backdrop-filter: blur(20px);
+             -webkit-backdrop-filter: blur(20px);
+             border-radius: 15px;
+             border: 1px solid var(--glass-border);
+             padding: 30px 20px;
+             text-align: center;
+             z-index: 9999;
+             display: none;
+             animation: thanksPop 0.5s ease-in-out;
+             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+         }
+         .thanks-text {
+             font-size: 20px;
+             color: #fff;
+             line-height: 1.6;
+         }
+         .thanks-highlight {
+             background: linear-gradient(90deg, var(--donate-c1), var(--donate-c2));
+             -webkit-background-clip: text;
+             color: transparent;
+             font-weight: bold;
+         }
+         /* 加好友弹窗 */
+         .add-friend-modal {
+             position: fixed;top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(0,0,0,0.8);
+             backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+             display: none;
+             align-items: center;
+             justify-content: center;
+             z-index: 9998;
+         }
+         .add-friend-content {
+             width: 90%;
+             max-width: 350px;
+             background: var(--glass-bg);
+             backdrop-filter: blur(30px);
+             -webkit-backdrop-filter: blur(30px);
+             border-radius: 20px;
+             border: 1px solid var(--glass-border);
+             padding: 30px;
+             text-align: center;
+         }
+         .add-friend-title {
+             font-size: 22px;
+             background: linear-gradient(90deg, var(--c1), var(--c2));
+             -webkit-background-clip: text;
+             color: transparent;
+             margin-bottom: 20px;
+         }
+         #friendIdInput {
+             width: 100%;
+             padding: 12px 15px;
+             background: rgba(255,255,255,0.05);
+             border: 1px solid var(--glass-border);
+             border-radius: 10px;
+             color: #fff;
+             font-size: 14px;
+             margin-bottom: 20px;
+         }
+         #friendIdInput:focus {
+             outline: none;
+             border-color: rgba(var(--rgb1), 0.3);
+         }
+         .add-friend-submit {.add-friend-submit {
+             padding: 10px 25px;
+             background: linear-gradient(135deg, var(--c1), var(--c2));
+             border: none;
+             border-radius: 10px;
+             color: #fff;
+             cursor: pointer;
+             margin-right: 10px;
+         }
+         .add-friend-cancel {
+             padding: 10px 25px;
+             background: rgba(255,255,255,0.1);
+             border: 1px solid var(--glass-border);
+             border-radius: 10px;
+             color: #fff;
+             cursor: pointer;
+         }
+         /* 核心动画 */
+         @keyframes gradientFlow {
+             0% { background-position: 0% 50%; }
+             50% { background-position: 100% 50%; }
+             100% { background-position: 0% 50%; }
+         }
+         @keyframes textGradientFlow {
+             0% { background-position: 0% 50%; }
+             100% { background-position: 300% 50%; }
+         }
+         @keyframes breathe {
+             0%,100% { transform: scale(1); box-shadow: 0 0 25px rgba(var(--rgb1), 0.4); }
+             50% { transform: scale(1.15); box-shadow: 0 0 35px rgba(var(--rgb1), 0.6); }
+         }
+         @keyframes modalFadeIn {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+         @keyframes modalPop {
+             from { transform: scale(0.7); opacity: 0; }
+             to { transform: scale(1); opacity: 1; }
+         }
+         @keyframes thanksPop {
+             from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+             to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+         }
+     </style></head>
+ <body>
+     <!-- 欢迎弹窗 -->
+     <div class="welcome-modal" id="welcomeModal">
+         <div class="modal-content">
+             <h2 class="modal-title">欢迎光临 落花公益导航</h2>
+             <p class="modal-desc">专注游戏美化资源分享，公益捐赠助力发展～</p>
+             <button class="close-btn" id="closeModalBtn">进入首页</button>
+         </div>
+     </div>
+     <!-- 感谢弹窗 -->
+     <div class="thanks-modal" id="thanksModal">
+         <div class="thanks-text">
+             <span class="thanks-highlight">感谢您的公益捐赠！</span><br>
+             每一份支持都让我们走得更远～
+         </div>
+     </div>
+     <!-- 加好友弹窗 -->
+     <div class="add-friend-modal" id="addFriendModal">
+         <div class="add-friend-content">
+             <h3 class="add-friend-title">添加好友</h3>
+             <input type="text" id="friendIdInput" placeholder="请输入好友ID/昵称">
+             <button class="add-friend-submit" id="addFriendSubmit">添加</button>
+             <button class="add-friend-cancel" id="addFriendCancel">取消</button>
+         </div>
+     </div>
+     <div class="scroll-container">
+         <div class="nav-container">
+             <h1 class="nav-title">落花公益导航</h1>
+             
+             <div class="stats-bar">
+                 <div class="stats-item">
+                     <span id="online-count" class="stats-num">0</span>
+                     <span class="stats-text">当前在线</span>
+                 </div>
+                 <div class="stats-item">
+                     <span id="visit-count" class="stats-num">0</span>
+                     <span class="stats-text">总访问量</span>
+                 </div>
              </div>
-             <div class="info-item">
-                 <label>当前状态</label>
-                 <span class="status-good">极佳</span>
+             <div class="link-group">
+                 <div class="link-btn" onclick="openLink('你的美化资源链接', this)">
+                     <span class="btn-icon">🎮</span>
+                     <span class="btn-text">美化资源</span></div>
+                 <div class="link-status" id="status1">未访问</div>
+                 <div class="link-btn" onclick="openLink('你的下载链接', this)">
+                     <span class="btn-icon">📥</span>
+                     <span class="btn-text">资源下载专区</span>
+                 </div>
+                 <div class="link-status" id="status2">未访问</div>
+                 <div class="link-btn" onclick="openLink('你的QQ群链接', this)">
+                     <span class="btn-icon">🐧</span>
+                     <span class="btn-text">落花公益交流群</span>
+                 </div>
+                 <div class="link-status" id="status3">未访问</div>
+                 <div class="link-btn" onclick="openLink('你的主频道链接', this)">
+                     <span class="btn-icon">📢</span>
+                     <span class="btn-text">落花公益主频道</span>
+                 </div>
+                 <div class="link-status" id="status4">未访问</div>
+                 <div class="link-btn" onclick="openLink('你的快手链接', this)">
+                     <span class="btn-icon">📱</span>
+                     <span class="btn-text">落花快手</span>
+                 </div>
+                 <div class="link-status" id="status5">未访问</div>
+                 <div class="link-btn" onclick="openLink('你的教程链接', this)">
+                     <span class="btn-icon">📚</span>
+                     <span class="btn-text">使用教程与帮助</span>
+                 </div>
+                 <div class="link-status" id="status6">未访问</div>
+             </div>
+             <div class="notice-box">
+                 <div class="notice-text">公益同行 感谢有你 落花导航因你更美好！</div>
+             </div>
+             <!-- 留言板 -->
+             <div class="message-board">
+                 <h3 class="board-title">留言板 - 欢迎提出建议</h3>
+                 <div class="message-input-wrap">
+                     <textarea id="messageInput" placeholder="请输入你的建议..."></textarea>
+                     <div class="btn-group">
+                         <button class="board-btn" id="submitBtn">提交</button>
+                         <button class="board-btn" id="clearInputBtn">清空输入</button>
+                     </div>
+                 </div>
+                 <div id="messageList"></div>
+                 <div class="board-tools"><button class="tool-btn" id="clearAllBtn">清空所有留言</button>
+                     <button class="tool-btn" id="exportBtn">导出留言</button>
+                     <button class="tool-btn" id="toggleThemeBtn">切换粉/蓝主题</button>
+                 </div>
+             </div>
+             <!-- 点击展示捐款二维码模块（合规隐藏式） -->
+             <div class="donate-section">
+                 <h3 class="donate-title">公益捐款助力</h3>
+                 <p class="donate-desc">本项目为公益性质，所有捐款将用于游戏美化资源开发与服务器维护<br>点击下方按钮查看公益捐款二维码，感谢您的爱心支持！</p>
+                 <!-- 点击展示二维码的按钮 -->
+                 <button class="show-qrcode-btn" id="showQrcodeBtn">点击查看公益捐款二维码</button>
+                 <!-- 二维码容器（默认隐藏，嵌入你提供的二维码） -->
+                 <div class="qrcode-container" id="qrcodeContainer">
+                     <!-- 第一个对公捐款二维码 -->
+                     <div class="qrcode-card">
+                         <img src="https://p6-passport.byteacctimg.com/img/user-avatar/3999b7a6999999999999999999999999~300x300.image" alt="公益捐款二维码1" class="qrcode-img">
+                         <div class="qrcode-text">公益捐款通道1</div>
+                         <div class="qrcode-tips">长按识别 | 对公账户捐赠</div>
+                     </div>
+                     <!-- 第二个对公捐款二维码 -->
+                     <div class="qrcode-card">
+                         <img src="https://p3-passport.byteacctimg.com/img/user-avatar/4000b7a6999999999999999999999999~300x300.image" alt="公益捐款二维码2" class="qrcode-img">
+                         <div class="qrcode-text">公益捐款通道2</div>
+                         <div class="qrcode-tips">长按识别 | 对公账户捐赠</div>
+                     </div>
+                 </div>
+             </div>
+             <!-- 仅在线用户可见的聊天室 -->
+             <div class="chat-section" id="chatSection">
+                 <h3 class="chat-title">落花公益聊天室</h3>
+                 <div class="chat-layout">
+                     <!-- 好友列表 -->
+                     <div class="friend-list">
+                         <h4 class="friend-title" id="onlineFriendTitle">在线好友 (0)</h4>
+                         <div id="friendListContainer">
+                             <!-- 动态加载在线好友 -->
+                         </div>
+                         <button class="add-friend-btn" id="addFriendBtn">添加好友</button>
+                     </div>
+                     <!-- 聊天区域 -->
+                     <div class="chat-area">
+                         <div class="chat-header">
+                             <div class="chat-avatar">聊</div>
+                             <div class="chat-name" id="currentChatName">公共聊天室</div>
+                         </div>
+                        <div class="chat-messages" id="chatMessages">
+                             <!-- 初始提示 -->
+                             <div style="text-align:center; color:#ccc; padding:20px;">
+                                 欢迎加入公益聊天室，和在线用户交流吧～
+                             </div>
+                         </div>
+                         <div class="chat-input-wrap">
+                             <textarea id="chatInput" placeholder="输入消息按回车发送..."></textarea>
+                             <button class="send-btn" id="sendMsgBtn">发送</button>
+                         </div>
+                     </div>
+                 </div>
              </div>
          </div>
-         <!-- 3个服务器区域 -->
-         <div class="delay-box">
-             <div class="server-tag">✅ 主服务器</div>
-             <div class="delay-title" id="server-area1">高防湖北十堰CN2</div>
-             <div class="delay-value" id="server-delay1">25ms</div>
-             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
-             <div class="delay-value" id="real-delay1">25ms</div>
-         </div>
-         <div class="delay-box">
-             <div class="server-tag">🔶 备用服务器1</div>
-             <div class="delay-title" id="server-area2">高防香港直连CN2</div>
-             <div class="delay-value" id="server-delay2">38ms</div>
-             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
-             <div class="delay-value" id="real-delay2">38ms</div>
-         </div>
-         <div class="delay-box">
-             <div class="server-tag">🔶 备用服务器2</div>
-             <div class="delay-title" id="server-area3">高防澳门国际BGP</div>
-             <div class="delay-value" id="server-delay3">42ms</div>
-             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
-             <div class="delay-value" id="real-delay3">42ms</div>
-         </div>
-         <!-- TG频道区域 -->
-         <div class="tg-box">
-             <div class="tg-title">官方群聊</div>
-             <a href="#" class="tg-link">✈️1079231571</a>
-             <a href="#" class="tg-link">✈️1079231571</a>
-             <div style="color: #999; font-size: 12px; margin-top: 10px;">点击上方可切换连线路线</div>
-         </div>
-         <!-- 按钮区域 -->
-         <div class="btn-box">
-             <button class="switch-btn" id="switch-btn">🔄 一键切换服务器节点</button>
-             <button class="refresh-btn" id="refresh-btn">🛡️ 刷新Ai智能防护</button>
-         </div>
-         <!-- 版权区域 -->
-         <div class="copyright">©2026 白域公益团队</div>
      </div>
      <script>
-         const areaList = [
-             "高防上海CN2", "高防北京BGP", "高防广州电信", 
-             "高防深圳联通", "高防杭州移动", "高防成都CN2",
-             "高防武汉BGP", "高防南京电信", "高防重庆联通",
-             "高防香港直连CN2", "高防澳门国际BGP", "高防台湾精品BGP"
-         ];
-         function getRandomDelay() {
-             return Math.floor(Math.random() * 41) + 10;
-         }
-         function updateSingleServer(id) {
-             const area = areaList[Math.floor(Math.random() * areaList.length)];
-             const delay = getRandomDelay();
-             document.getElementById(`server-area${id}`).textContent = area;
-             document.getElementById(`server-delay${id}`).textContent = `${delay}ms`;
-             document.getElementById(`real-delay${id}`).textContent = `${delay}ms`;
-         }
-         function updateAllData() {
-             updateSingleServer(1);
-             updateSingleServer(2);
-             updateSingleServer(3);
-         }
-         function switchServers() {
-             updateAllData();
-             alert('服务器节点已切换，延迟同步更新！');
-         }
-         function updateTime() {
-             const now = new Date();
-             const timeStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,0)}-${String(now.getDate()).padStart(2,0)} ${String(now.getHours()).padStart(2,0)}:${String(now.getMinutes()).padStart(2,0)}:${String(now.getSeconds()).padStart(2,0)}`;
-             document.getElementById('current-time').textContent = timeStr;
-         }
-         updateTime();
-         updateAllData();
-         setInterval(updateTime, 1000);
-         document.getElementById('refresh-btn').addEventListener('click', () => {
-             updateAllData();
-             alert('Ai智能防护已刷新，节点与延迟已更新！');
+         document.addEventListener('DOMContentLoaded', function() {
+             // 1. 粉/蓝主题切换
+             const gradientThemes = [
+                 { c1: "#ec4899", c2: "#f472b6", c3: "#f9a8d4", rgb1: "236,72,153", rgb2: "244,114,182", rgb3: "249,168,129" },
+                 { c1: "#3a86ff", c2: "#00b4d8", c3: "#90e0ef", rgb1: "58,134,255", rgb2: "0,180,216", rgb3: "144,224,239" }
+             ];
+             let currentThemeIndex = Math.floor(Math.random() * gradientThemes.length);
+             setTheme(currentThemeIndex);
+             // 2. 背景图切换
+             const bgImagePool = [
+                 "https://b0.bdstatic.com/754847694d48e01afc1dbcff4dc4776c.jpg",
+                 "https://gips1.baidu.com/it/u=108561800,4149505055&fm=3074&app=3074&f=JPEG"
+             ];
+             const randomBg = bgImagePool[Math.floor(Math.random() * bgImagePool.length)];
+             document.documentElement.style.setProperty('--bg-img', `url('${randomBg}')`);
+             // 3. 在线/访问人数统计（模拟真实在线数据）
+             let onlineCount = Math.floor(Math.random() * 50) + 1; // 1-50随机在线人数
+             document.getElementById('online-count').innerText = onlineCount;
+             const totalVisit = Math.floor(Math.random() * 100000) + 50000;
+             document.getElementById('visit-count').innerText = totalVisit.toLocaleString('zh-CN');
+             // 4. 图标慢速切换
+             const allIcons = ["🎮","📥","🐧","📢","📱","📚"];setInterval(() => {
+                 document.querySelectorAll('.btn-icon').forEach((icon, idx) => {
+                     icon.innerText = allIcons[Math.floor(Math.random() * allIcons.length)];
+                 });
+             }, 2000);
+             // 5. 欢迎弹窗控制
+             document.getElementById('closeModalBtn').addEventListener('click', function() {
+                 document.getElementById('welcomeModal').style.opacity = 0;
+                 setTimeout(() => document.getElementById('welcomeModal').style.display = 'none', 300);
+                 
+                 // 在线人数>0时显示聊天室
+                 if (onlineCount > 0) {
+                     document.getElementById('chatSection').style.display = 'block';
+                     loadOnlineFriends(onlineCount); // 加载在线好友
+                 }
+             });
+             // 6. 留言板核心功能
+             const messageInput = document.getElementById('messageInput');
+             const submitBtn = document.getElementById('submitBtn');
+             const clearInputBtn = document.getElementById('clearInputBtn');
+             const clearAllBtn = document.getElementById('clearAllBtn');
+             const exportBtn = document.getElementById('exportBtn');
+             const messageList = document.getElementById('messageList');
+             loadMessages();
+             // 提交留言
+             submitBtn.addEventListener('click', () => {
+                 const text = messageInput.value.trim();
+                 if (text) {
+                     saveMessage(text);
+                     messageInput.value = '';
+                 }
+             });
+             // 清空输入
+             clearInputBtn.addEventListener('click', () => messageInput.value = '');
+             // 清空所有留言
+             clearAllBtn.addEventListener('click', () => {
+                 if (confirm('确定清空所有留言吗？')) {
+                     localStorage.removeItem('luohua_messages');
+                     loadMessages();
+                 }
+             });
+             // 导出留言
+             exportBtn.addEventListener('click', () => {
+                 const messages = JSON.parse(localStorage.getItem('luohua_messages') || '[]');const blob = new Blob([JSON.stringify(messages, null, 2)], { type: 'application/json' });
+                 const a = document.createElement('a');
+                 a.href = URL.createObjectURL(blob);
+                 a.download = '落花公益导航留言_' + new Date().toLocaleDateString() + '.json';
+                 a.click();
+             });
+             // 主题切换
+             document.getElementById('toggleThemeBtn').addEventListener('click', () => {
+                 currentThemeIndex = (currentThemeIndex + 1) % 2;
+                 setTheme(currentThemeIndex);
+             });
+             // 7. 点击展示捐款二维码功能
+             const showQrcodeBtn = document.getElementById('showQrcodeBtn');
+             const qrcodeContainer = document.getElementById('qrcodeContainer');
+             const thanksModal = document.getElementById('thanksModal');
+             showQrcodeBtn.addEventListener('click', () => {
+                 // 切换二维码容器显示/隐藏
+                 if (qrcodeContainer.style.display === 'flex') {
+                     qrcodeContainer.style.display = 'none';
+                     showQrcodeBtn.innerText = '点击查看公益捐款二维码';
+                 } else {
+                     qrcodeContainer.style.display = 'flex';
+                     showQrcodeBtn.innerText = '收起公益捐款二维码';
+                     // 显示感谢提示（非强制，仅友好提醒）
+                     thanksModal.style.display = 'block';
+                     setTimeout(() => thanksModal.style.display = 'none', 3000);
+                 }
+             });
+             // 8. 在线聊天室功能（仅在线用户可见）
+             const chatInput = document.getElementById('chatInput');
+             const sendMsgBtn = document.getElementById('sendMsgBtn');
+             const chatMessages = document.getElementById('chatMessages');
+             const currentChatName = document.getElementById('currentChatName');
+             const friendListContainer = document.getElementById('friendListContainer');
+             const onlineFriendTitle = document.getElementById('onlineFriendTitle');
+             // 加载在线好友列表
+             function loadOnlineFriends(count) {
+                 onlineFriendTitle.innerText = `在线好友 (${count})`;
+                 friendListContainer.innerHTML = '';
+                 
+                 // 生成随机在线好友
+                 const friendNames = ['公益大使', '爱心网友', '资源爱好者', '管理员', '志愿者', '游客', '捐赠者', '开发者'];for (let i = 0; i < count; i++) {
+                     const name = friendNames[Math.floor(Math.random() * friendNames.length)] + (i + 1);
+                     const initial = name.charAt(0);
+                     const friendItem = document.createElement('div');
+                     friendItem.className = 'friend-item';
+                     friendItem.onclick = () => selectFriend(name);
+                     friendItem.innerHTML = `
+                         <div class="friend-avatar">${initial}</div>
+                         <div class="friend-name">${name}</div>
+                     `;
+                     friendListContainer.appendChild(friendItem);
+                     
+                     // 默认选中第一个好友
+                     if (i === 0) {
+                         friendItem.classList.add('active');
+                         currentChatName.innerText = name;
+                     }
+                 }
+             }
+             // 选择好友
+             window.selectFriend = function(name) {
+                 currentChatName.innerText = name;
+                 document.querySelectorAll('.friend-item').forEach(item => item.classList.remove('active'));
+                 event.target.closest('.friend-item').classList.add('active');
+                 
+                 // 清空初始提示
+                 if (chatMessages.innerHTML.includes('欢迎加入公益聊天室')) {
+                     chatMessages.innerHTML = '';
+                 }
+             };
+             // 发送消息
+             function sendMessage() {
+                 const text = chatInput.value.trim();
+                 if (!text) return;
+                 
+                 const now = new Date();
+                 const timeStr = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes());
+                 
+                 const msgHtml = `
+                     <div class="msg-item msg-mine">
+                         <div class="msg-avatar">我</div>
+                         <div class="msg-bubble">${text}</div>
+                     <div class="msg-bubble">${text}</div>
+                         <div class="msg-time">${timeStr}</div>
+                     </div>
+                 `;
+                 chatMessages.innerHTML += msgHtml;
+                 chatInput.value = '';
+                 chatMessages.scrollTop = chatMessages.scrollHeight;
+                 // 模拟好友回复（仅选中非公共聊天室时）
+                 if (currentChatName.innerText !== '公共聊天室') {
+                     setTimeout(() => {
+                         const replies = [
+                             "感谢你的公益支持！", "这个资源真的很棒～", "一起为公益助力！", 
+                             "希望能多更新些资源", "公益项目辛苦了！", "已捐款，希望越做越好"
+                         ];
+                         const randomReply = replies[Math.floor(Math.random() * replies.length)];
+                         const replyHtml = `
+                             <div class="msg-item msg-other">
+                                 <div class="msg-avatar">${currentChatName.innerText.charAt(0)}</div>
+                                 <div class="msg-bubble">${randomReply}</div>
+                                 <div class="msg-time">${timeStr}</div>
+                             </div>
+                         `;
+                         chatMessages.innerHTML += replyHtml;
+                         chatMessages.scrollTop = chatMessages.scrollHeight;
+                     }, 1000);
+                 }
+             }
+             // 点击发送
+             sendMsgBtn.addEventListener('click', sendMessage);
+             // 回车发送
+             chatInput.addEventListener('keydown', (e) => {
+                 if (e.key === 'Enter' && !e.shiftKey) {
+                     e.preventDefault();
+                     sendMessage();
+                 }
+             });
+             // 9. 加好友功能
+             const addFriendBtn = document.getElementById('addFriendBtn');
+             const addFriendModal = document.getElementById('addFriendModal');
+             const addFriendSubmit = document.getElementById('addFriendSubmit');
+             const addFriendCancel = document.getElementById('addFriendCancel');
+             const friendIdInput = document.getElementById('friendIdInput');
+             // 打开加好友弹窗
+             addFriendBtn.addEventListener('click', () => {addFriendModal.style.display = 'flex';
+                 friendIdInput.value = '';
+             });
+             // 关闭加好友弹窗
+             addFriendCancel.addEventListener('click', () => {
+                 addFriendModal.style.display = 'none';
+             });
+             // 提交加好友
+             addFriendSubmit.addEventListener('click', () => {
+                 const friendId = friendIdInput.value.trim();
+                 if (!friendId) {
+                     alert('请输入好友ID/昵称');
+                     return;
+                 }
+                 alert(`已发送好友请求给【${friendId}】，等待对方通过～`);
+                 addFriendModal.style.display = 'none';
+             });
+             // 10. 普通链接打开函数
+             window.openLink = function(url, btnEl) {
+                 if (url.includes('你的')) {
+                     alert('请先替换为真实链接！');
+                     return;
+                 }
+                 let targetUrl = url.startsWith('http') ? url : 'http://' + url;
+                 window.open(targetUrl, '_blank');
+                 const statusId = 'status' + (Array.from(btnEl.parentElement.children).indexOf(btnEl) / 2 + 1);
+                 document.getElementById(statusId).innerText = '已访问 ' + new Date().toLocaleTimeString();
+             };
+             // 工具函数：设置主题
+             function setTheme(index) {const theme = gradientThemes[index];
+                 for (let key in theme) {
+                     document.documentElement.style.setProperty(`--${key}`, theme[key]);
+                 }
+             }
+             // 工具函数：保存留言
+             function saveMessage(text) {
+                 const timeStr = new Date().toLocaleString('zh-CN');
+                 const messages = JSON.parse(localStorage.getItem('luohua_messages') || '[]');
+                 messages.unshift({ text, time: timeStr });
+                 localStorage.setItem('luohua_messages', JSON.stringify(messages));
+                 loadMessages();
+             }
+             // 工具函数：加载留言
+             function loadMessages() {
+                 const messages = JSON.parse(localStorage.getItem('luohua_messages') || '[]');
+                 messageList.innerHTML = '';
+                 messages.forEach(msg => {
+                     const item = document.createElement('div');
+                     item.className = 'message-item';
+                     item.innerHTML = `<div class="message-text">${msg.text}</div><div class="message-time">${msg.time}</div>`;
+                     messageList.appendChild(item);
+                 });
+             }
          });
-         document.getElementById('switch-btn').addEventListener('click', switchServers);
      </script>
  </body>
- </html>
+ </html>           
+             
