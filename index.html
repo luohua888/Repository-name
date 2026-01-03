@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="落花公益端口 - 稳定高防节点服务">
-    <title>落花公益端口</title>
+    <title>白域公益端口</title>
     <style>
         * {
             margin: 0;
@@ -12,41 +11,16 @@
             box-sizing: border-box;
             font-family: "Microsoft YaHei", sans-serif;
         }
-        /* 流星背景容器 */
-        .meteor-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #00001a, #000033, #00004d);
-            overflow: hidden;
-            z-index: -1;
-        }
-        /* 流星样式 */
-        .meteor {
-            position: absolute;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, #fff, transparent);
-            border-radius: 50%;
-            transform: rotate(-45deg);
-            animation: meteor-fall linear forwards;
-            opacity: 0;
-        }
-        /* 流星坠落动画 */
-        @keyframes meteor-fall {
-            0% {
-                opacity: 1;
-                transform: rotate(-45deg) translate(-50px, -50px);
-            }
-            100% {
-                opacity: 0;
-                transform: rotate(-45deg) translate(100vw, 100vh);
-            }
+        body {
+            background: #000;
+            background-image: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         .container {
-            position: relative;
             width: 100%;
             max-width: 450px;
             background: rgba(0, 0, 0, 0.7);
@@ -54,9 +28,6 @@
             padding: 30px 20px;
             box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
             border: 1px solid rgba(0, 191, 255, 0.3);
-            margin: 0 auto;
-            z-index: 1;
-            backdrop-filter: blur(8px);
         }
         .avatar {
             display: flex;
@@ -69,14 +40,13 @@
             border-radius: 50%;
             border: 3px solid #00bfff;
             object-fit: cover;
-            box-shadow: 0 0 15px #00bfff;
         }
         .title {
             text-align: center;
             font-size: 28px;
             font-weight: bold;
             color: #00bfff;
-            text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
+            text-shadow: 0 0 10px #00bfff;
             margin-bottom: 10px;
         }
         .sub-title {
@@ -91,7 +61,6 @@
             padding: 15px;
             margin-bottom: 20px;
             border-left: 3px solid #00bfff;
-            backdrop-filter: blur(5px);
         }
         .info-item {
             display: flex;
@@ -115,12 +84,12 @@
             background: rgba(25, 25, 45, 0.6);
             border-radius: 10px;
             padding: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
-            backdrop-filter: blur(5px);
         }
         .delay-title {
             color: #ccc;
+
             font-size: 14px;
             margin-bottom: 10px;
         }
@@ -129,13 +98,17 @@
             font-weight: bold;
             color: #00ff47;
         }
+        .server-tag {
+            color: #00bfff;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
         .tg-box {
             background: rgba(25, 25, 45, 0.6);
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
             text-align: center;
-            backdrop-filter: blur(5px);
         }
         .tg-title {
             color: #00bfff;
@@ -159,21 +132,28 @@
         }
         .btn-box {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
-        .refresh-btn {
+        .refresh-btn, .switch-btn {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(90deg, #ff4500, #32cd32);
             color: #fff;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .refresh-btn {
+            background: linear-gradient(90deg, #ff4500, #32cd32);
             box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
         }
-        .refresh-btn:hover {
+        .switch-btn {
+            background: linear-gradient(90deg, #00bfff, #9932cc);
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+        .refresh-btn:hover, .switch-btn:hover {
             opacity: 0.9;
             transition: 0.3s;
         }
@@ -186,114 +166,109 @@
     </style>
 </head>
 <body>
-    <div class="meteor-bg" id="meteorBg"></div>
     <div class="container">
+        <!-- 头像区域 -->
         <div class="avatar">
-            <img src="https://img1.baidu.com/it/u=3173626977,3358098219&fm=253&app=138&f=JPEG?w=800&h=1000" alt="猫羽雫">
+            <img src="https://sdk.cn-nb1.rains3.com/761160c8-ea78-48e8-b1c0-1f93600ef58a.jpg" alt="头像">
         </div>
-        <div class="title">落花公益端口</div>
+        <!-- 标题区域 -->
+        <div class="title">白域公益端口</div>
         <div class="sub-title">服务器保持稳定连接中...</div>
+        <!-- 信息卡片 -->
         <div class="info-card">
             <div class="info-item">
                 <label>端口名称</label>
-                <span>落花公益端口</span>
+                <span>白域公益端口</span>
             </div>
             <div class="info-item">
                 <label>领先优势</label>
                 <span>双适配·低延迟·高防护</span>
             </div>
             <div class="info-item">
-                <label>当前时间</label>
-                <span id="current-time"></span>
-            </div>
-            <div class="info-item">
-                <label>当前状态</label>
-                <span class="status-good">极佳</span>
-            </div>
-        </div>
-        <div class="delay-box">
-            <div class="delay-title" id="server-area">高防上海CN2</div>
-            <div class="delay-value" id="server-delay">30ms</div>
-            <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
-            <div class="delay-value" id="real-time-delay">30ms</div>
-        </div>
-        <div class="tg-box">
-            <div class="tg-title">官方TG频道</div>
-            <a href="#" class="tg-link">✈️@LUOHUALINK</a>
-            <a href="#" class="tg-link">✈️@LUOHUALINK</a>
-            <div style="color: #999; font-size: 12px; margin-top: 10px;">点击上方链接加入交流</div>
-        </div>
-        <div class="btn-box">
-            <button class="refresh-btn" id="refresh-btn">刷新Ai智能防护</button>
-        </div>
-        <div class="copyright">©2026 落花公益团队 版权所有</div>
-    </div>
-
-    <script>
-        // 服务器地区列表
-        const areaList = [
-            "高防上海CN2", "高防北京BGP", "高防广州电信", 
-            "高防深圳联通", "高防杭州移动", "高防成都CN2",
-            "高防武汉BGP", "高防南京电信", "高防重庆联通",
-            "高防香港CN2", "高防新加坡CN2", "高防日本软银"
-        ];
-
-        // 生成10-50ms的随机延迟
-        function getRandomDelay() {
-            return Math.floor(Math.random() * 41) + 10;
-        }
-
-        // 更新延迟和地区
-        function updateData() {
-            const randomArea = areaList[Math.floor(Math.random() * areaList.length)];
-            const randomDelay = getRandomDelay();
-            document.getElementById('server-area').textContent = randomArea;
-            document.getElementById('server-delay').textContent = `${randomDelay}ms`;
-            document.getElementById('real-time-delay').textContent = `${randomDelay}ms`;
-        }
-
-        // 更新当前时间
-        function updateTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeStr = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-            document.getElementById('current-time').textContent = timeStr;
-        }
-
-        // 生成流星
-        function createMeteor() {
-            const bg = document.getElementById('meteorBg');
-            const meteor = document.createElement('div');
-            meteor.className = 'meteor';
-            // 随机位置
-            const top = Math.random() * 30;
-            const left = Math.random() * 100;
-            meteor.style.top = `${top}%`;
-            meteor.style.left = `${left}%`;
-            // 随机动画时长
-            const duration = 2 + Math.random() * 3;
-            meteor.style.animationDuration = `${duration}s`;
-            bg.appendChild(meteor);
-            // 移除已消失的流星
-            setTimeout(() => {
-                meteor.remove();
-            }, duration * 1000);
-        }
-
-        // 初始化
-        updateTime();
-        updateData();
-        setInterval(updateTime, 1000);
-        setInterval(createMeteor, 1000); // 每秒生成一个流星
-        document.getElementById('refresh-btn').addEventListener('click', function() {
-            updateData();
-            alert('Ai智能防护已刷新，节点与延迟已更新！');
-        });
-    </script>
-</body>
-</html>
+                 <label>当前时间</label>
+                 <span id="current-time">2026-10-05 18:53:48</span>
+             </div>
+             <div class="info-item">
+                 <label>当前状态</label>
+                 <span class="status-good">极佳</span>
+             </div>
+         </div>
+         <!-- 3个服务器区域 -->
+         <div class="delay-box">
+             <div class="server-tag">✅ 主服务器</div>
+             <div class="delay-title" id="server-area1">高防湖北十堰CN2</div>
+             <div class="delay-value" id="server-delay1">25ms</div>
+             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
+             <div class="delay-value" id="real-delay1">25ms</div>
+         </div>
+         <div class="delay-box">
+             <div class="server-tag">🔶 备用服务器1</div>
+             <div class="delay-title" id="server-area2">高防香港直连CN2</div>
+             <div class="delay-value" id="server-delay2">38ms</div>
+             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
+             <div class="delay-value" id="real-delay2">38ms</div>
+         </div>
+         <div class="delay-box">
+             <div class="server-tag">🔶 备用服务器2</div>
+             <div class="delay-title" id="server-area3">高防澳门国际BGP</div>
+             <div class="delay-value" id="server-delay3">42ms</div>
+             <div class="delay-title" style="margin-top: 10px;">实时延迟</div>
+             <div class="delay-value" id="real-delay3">42ms</div>
+         </div>
+         <!-- TG频道区域 -->
+         <div class="tg-box">
+             <div class="tg-title">官方群聊</div>
+             <a href="#" class="tg-link">✈️1079231571</a>
+             <a href="#" class="tg-link">✈️1079231571</a>
+             <div style="color: #999; font-size: 12px; margin-top: 10px;">点击上方可切换连线路线</div>
+         </div>
+         <!-- 按钮区域 -->
+         <div class="btn-box">
+             <button class="switch-btn" id="switch-btn">🔄 一键切换服务器节点</button>
+             <button class="refresh-btn" id="refresh-btn">🛡️ 刷新Ai智能防护</button>
+         </div>
+         <!-- 版权区域 -->
+         <div class="copyright">©2026 白域公益团队</div>
+     </div>
+     <script>
+         const areaList = [
+             "高防上海CN2", "高防北京BGP", "高防广州电信", 
+             "高防深圳联通", "高防杭州移动", "高防成都CN2",
+             "高防武汉BGP", "高防南京电信", "高防重庆联通",
+             "高防香港直连CN2", "高防澳门国际BGP", "高防台湾精品BGP"
+         ];
+         function getRandomDelay() {
+             return Math.floor(Math.random() * 41) + 10;
+         }
+         function updateSingleServer(id) {
+             const area = areaList[Math.floor(Math.random() * areaList.length)];
+             const delay = getRandomDelay();
+             document.getElementById(`server-area${id}`).textContent = area;
+             document.getElementById(`server-delay${id}`).textContent = `${delay}ms`;
+             document.getElementById(`real-delay${id}`).textContent = `${delay}ms`;
+         }
+         function updateAllData() {
+             updateSingleServer(1);
+             updateSingleServer(2);
+             updateSingleServer(3);
+         }
+         function switchServers() {
+             updateAllData();
+             alert('服务器节点已切换，延迟同步更新！');
+         }
+         function updateTime() {
+             const now = new Date();
+             const timeStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,0)}-${String(now.getDate()).padStart(2,0)} ${String(now.getHours()).padStart(2,0)}:${String(now.getMinutes()).padStart(2,0)}:${String(now.getSeconds()).padStart(2,0)}`;
+             document.getElementById('current-time').textContent = timeStr;
+         }
+         updateTime();
+         updateAllData();
+         setInterval(updateTime, 1000);
+         document.getElementById('refresh-btn').addEventListener('click', () => {
+             updateAllData();
+             alert('Ai智能防护已刷新，节点与延迟已更新！');
+         });
+         document.getElementById('switch-btn').addEventListener('click', switchServers);
+     </script>
+ </body>
+ </html>
